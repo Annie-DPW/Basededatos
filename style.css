@@ -1,0 +1,852 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: "Poppins";
+}
+
+:root {
+    --bg-color: #080808;
+    --second-bg-color: #101010;
+    --text-color: white;
+    --main-color: #a78667;
+}
+
+html {
+    font-size: 60%;
+    overflow-x: hidden;
+}
+
+body {
+    background: var(--bg-color);
+    font-family: "poppins";
+    color: var(--text-color);
+}
+
+span {
+    background: linear-gradient(270deg,
+            #b69b7c 10%,
+            #c56e6b 100%);
+    background-clip: text;
+    color: transparent;
+}
+
+html::-webkit-scrollbar {
+    width: 0.8rem;
+}
+
+html::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+html::-webkit-scrollbar-thumb {
+    background: var(--main-color);
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 9%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 3rem;
+    color: var(--main-color);
+    font-family: 800;
+    cursor: pointer;
+    transition: 0.5s ease;
+    text-shadow: 0 0 15px var(--main-color);
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+.navbar a {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    margin-left: 4rem;
+    font-weight: 500;
+    border-bottom: 3px solid transparent;
+    transition: 0.3s ease;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: var(--main-color);
+    border-bottom: 3px solid var(--main-color);
+    text-shadow: 0 0 15px var(--main-color);
+}
+
+#menu-icon {
+    font-size: 3.6rem;
+    color: var(--main-color);
+    display: none;
+
+    @media(max-width:995px) {
+        #menu-icon {
+            display: block;
+        }
+    }
+
+    .navbar {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 10%;
+        border-left: 3px solid var(--main-color);
+        border-bottom: 3px solid var(--main-color);
+        border-top-left-radius: 2rem;
+        padding: 1rem 3%;
+        background-color: var(--second-bg-color);
+        border-top: 0.1rem solid rgba(0, 0, 0, 0.1);
+        display: none;
+    }
+
+    .navbar.active {
+        display: block;
+    }
+
+    .navbar a {
+        display: block;
+        font-size: 2rem;
+        margin: 3rem 0;
+    }
+
+    .navbar a:hover,
+    .navbar a.active {
+        padding: 1rem;
+        border-radius: 0.5rem;
+    }
+}
+
+/*home*/
+.home {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgb(46, 36, 34)), url(img/fond\ 01.jpg);
+    background-size: cover;
+    height: 100vh;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 1rem;
+}
+
+.home-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.home-img {
+    border-radius: 50%;
+    margin-bottom: 2rem;
+}
+
+.home-img img {
+    position: relative;
+    border-radius: 50%;
+    top: 5rem;
+    width: 18vw;
+    box-shadow: 0 0 1px var(--main-color), 0 0 5px var(--main-color), 0 0 15px var(--main-color);
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.home-img img:hover {
+    box-shadow: 0 0 10px var(--main-color), 0 0 15px var(--main-color), 0 0 45px var(--main-color);
+    transform: scale(1.05);
+}
+
+.home-content h1 {
+    font-size: 3.5rem;
+    font-weight: 600;
+    margin-top: 4rem;
+    line-height: 1;
+}
+
+.home-content h3 {
+    position: relative;
+    font-size: 3.5rem;
+    color: #8d8d8d;
+    -webkit-text-stroke: #7e7e7e;
+    text-transform: uppercase;
+    margin: 0.5rem 0;
+    /* Added margin for spacing between headings */
+}
+
+.home-content h3::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    color: #c46565;
+    -webkit-text-stroke: 0px #c46565;
+    border-right: 2px solid #c46565;
+    overflow: hidden;
+    animation: animate 6s linear infinite;
+}
+
+@keyframes animate {
+
+    0%,
+    10%,
+    100% {
+        width: 0;
+    }
+
+    80%,
+    90% {
+        width: 100%;
+    }
+}
+
+.home-content p {
+    font-size: 2rem;
+    font-weight: 500;
+    max-width: 1000px;
+    margin: 1rem 0;
+}
+
+.home-content .social-icon a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: var(--main-color);
+    margin: 3rem 1.5rem 3rem 0;
+    transition: 0.3s ease;
+}
+
+.home-content .social-icon a:hover {
+    transform: scale(1.3) translateY(-5px);
+    text-shadow: 0 0 25px var(--main-color);
+}
+
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    margin: 0.5em;
+    background: var(--main-color);
+    color: black;
+    border: none;
+    font-size: 20px;
+    border-radius: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.btn2 {
+    background: black;
+    color: var(--main-color);
+    border: 1px solid var(--main-color);
+}
+
+.btn:hover {
+    color: var(--main-color);
+    border: 1px solid var(--main-color);
+    box-shadow: 0 0 15px var(--main-color);
+}
+
+.btn2:hover {
+    color: black;
+}
+
+.btn::after {
+    content: "";
+    background: black;
+    position: absolute;
+    z-index: -1;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(-45deg) scale(0, 1);
+    transition: all 0.5s;
+}
+
+.btn2::after {
+    background: var(--main-color);
+}
+
+.btn:hover::after {
+    transform: skewX(-45deg) scale(1, 1);
+    transition: all 0.5s;
+}
+
+/* Responsive Design */
+@media (max-width: 895px) {
+    .home {
+        flex-direction: column;
+        margin: 1rem 1rem;
+    }
+
+    .home-content h1 {
+        font-size: 3.5rem;
+        margin-top: 3rem;
+    }
+
+    .home-content h3 {
+        font-size: 2.6rem;
+    }
+
+    .home-content p {
+        max-width: 500px;
+        margin: 1rem auto;
+    }
+
+    .home-img img {
+        width: 36vw;
+        margin-top: -2rem;
+    }
+
+
+}
+
+
+/*about me*/
+section {
+    min-height: 100vh;
+    padding: 5rem 10%;
+}
+
+.about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7rem;
+    background: var(--second-bg-color);
+}
+
+.about-img img {
+    position: relative;
+    width: 30vw;
+    border-radius: 50%;
+    box-shadow: 0 0 2px var(--main-color),
+        0 0 10px var(--main-color),
+        0 0 25px var(--main-color);
+}
+
+.about-img img:hover {
+    box-shadow: 0 0 5px var(--main-color),
+        0 0 15px var(--main-color),
+        0 0 45px var(--main-color);
+    transform: scale(1.01);
+}
+
+.about-content h1.heading {
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.about-content h2 {
+    font-size: 3rem;
+    margin-top: 5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.about-content p {
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+}
+
+.about-content .social-icon a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: var(--main-color);
+    margin: 3rem 1.5rem 3rem 0;
+    transition: 0.3s ease;
+}
+
+.about-content .social-icon a:hover {
+    transform: scale(1.3) translateY(-5px);
+    text-shadow: 0 0 25px var(--main-color);
+}
+
+.about-btn {
+    margin-top: 2rem;
+}
+
+/*skills*/
+.skills {
+    background: black;
+}
+
+.skills .content {
+    padding: 40px 0;
+}
+
+.skills .content .title {
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.skills .skills-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.skills-details .topic {
+    font-size: 2.5rem;
+}
+
+.skills-details .text {
+    width: 50%;
+}
+
+.skills-details p {
+    font-size: 1.5rem;
+    color: white;
+    text-align: justify;
+    padding: 50px 0;
+}
+
+.skills .skills-details .experience {
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+}
+
+.skills-details .experience .num {
+    color: var(--text-color);
+    font-size: 80px;
+}
+
+.skills-details .experience .exp {
+    color: white;
+    margin-left: 20px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.skills-details .boxes {
+    width: 35%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.skills-details .box {
+    width: calc(50% - 20px);
+    /* Adjust width for better fitting */
+    color: #b74b4b;
+    margin-bottom: 10px;
+    /* Space between rows */
+}
+
+.skills-details .boxes .topic {
+    font-size: 30px;
+    color: #b74b4b;
+}
+
+.skills-details .per {
+    width: 50px;
+    color: #b74b4b;
+    font-size: 2rem;
+}
+
+.skills-details .box i {
+    font-size: 3rem;
+    /* Adjust the size of the icons */
+    color: #b74b4b;
+    /* You can customize the color as needed */
+    margin-top: 10px;
+    /* Add some spacing between the text and the icon */
+}
+
+@media (max-width: 768px) {
+    .skills .skills-details {
+        flex-direction: column;
+    }
+
+    .skills-details .text,
+    .skills-details .boxes {
+        width: 100%;
+        /* Full width for the text section */
+    }
+
+    .skills-details .box {
+        width: calc(50% - 10px);
+        /* Two columns layout with some spacing */
+    }
+}
+
+@media (max-width: 480px) {
+    .skills .content .title {
+        font-size: 2.5rem;
+    }
+
+    .skills-details .topic {
+        font-size: 2rem;
+    }
+
+    .skills-details .experience .num {
+        font-size: 3rem;
+    }
+
+    .skills-details .boxes {
+        display: flex;
+        flex-wrap: wrap;
+        /* Ensure boxes wrap correctly */
+        justify-content: space-between;
+    }
+
+    .skills-details .box {
+        width: calc(50% - 10px);
+        /* Still two columns on very small screens */
+    }
+}
+
+/*portafolio*/
+.portafolio {
+    background-color: var(--bg-color);
+    color: var(--bg-color);
+    padding: 50px 20px;
+}
+
+.portafolio .content-section {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.portafolio h2 {
+    font-size: 68px;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.portafolio .galeria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around
+}
+
+.portafolio .galeria .proyecto {
+    position: relative;
+    max-width: 340px;
+    height: fit-content;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.portafolio .galeria .proyecto img {
+    width: 100%;
+    height: 250px;
+    /* Ajusta esta altura según tus necesidades */
+    object-fit: cover;
+    display: block;
+}
+
+.portafolio .galeria .proyecto .overlay {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: linear-gradient(rgba(168, 167, 166, 0.267), rgb(255, 107, 107));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: opacity 0.5s;
+    font-size: 15px;
+    letter-spacing: 3px;
+    opacity: 0;
+
+}
+
+.portafolio .galeria .proyecto .overlay h3 {
+    margin-bottom: 20px;
+    transition: margin-bottom 0.5s;
+}
+
+.portafolio .galeria .proyecto:hover .overlay {
+    opacity: 1;
+}
+
+.portafolio .galeria .proyecto:hover .overlay h3 {
+    margin-bottom: 0;
+}
+
+.portafolio .galeria .about-btn {
+    display: inline-block;
+    justify-content: center;
+    /* Centra horizontalmente */
+    align-items: center;
+    /* Centra verticalmente */
+}
+
+/*contacto*/
+
+.contact {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.13), rgba(0, 0, 0, 0.199)), url(img/08.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.contact h2 {
+    text-align: center;
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+}
+
+.contact form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    margin: 5rem 0;
+    text-align: center;
+}
+
+.contact form .input-box input,
+.contact form textarea {
+    width: 100%;
+    padding: 2rem;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    border-radius: 1rem;
+    border: 2px solid var(--bg-color);
+    margin: 1.5rem 0;
+    resize: none;
+}
+
+@media (max-width: 768px) {
+    .contact form {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
+
+/*footer*/
+.footer {
+    background-color: var(--bg-color);
+    padding: 5px 0;
+}
+
+.footer .social-icons {
+    text-align: center;
+}
+
+.footer ul {
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.footer ul li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.footer ul li a {
+    color: white;
+    border-bottom: 3px solid transparent;
+    transition: 0.3s ease-in-out;
+}
+
+.footer .social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: var(--main-color);
+    margin: 3rem 1.5rem 3rem 0;
+    transition: 0.3s ease;
+}
+
+.footer .social-icons a:hover {
+    transform: scale(1.3) translateY(-5px);
+    text-shadow: 0 0 25px var(--main-color);
+}
+
+.footer ul li a:hover {
+    border-bottom: 3px solid var(--main-color);
+}
+
+.footer .copyright {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 16px;
+    color: var(--main-color);
+}
+
+
+
+
+/* ================================================= Contenido Servicios ================================================= */
+
+.heading {
+    text-align: center;
+    font-size: 4.5rem;
+}
+
+.services h2 {
+    margin-bottom: 5rem;
+}
+
+.services-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.services-container .services-box {
+    flex: 1 1 30rem;
+    background: var(--second-bg-color);
+    padding: 3rem 2rem 4rem;
+    border-radius: 2rem;
+    text-align: center;
+    border: .2rem solid var(--bg-color);
+    transition: .5s ease;
+}
+
+.services-container .services-box:hover {
+    border-color: var(--main-color);
+    transform: scale(1.02);
+}
+
+.services-box i {
+    font-size: 7rem;
+    color: var(--main-color);
+}
+
+.services-box h3 {
+    font-size: 2.6rem;
+}
+
+.services-box p {
+    font-size: 1.6rem;
+    margin: 1rem 0 3rem;
+}
+
+/* ================================================= Fin Contenido Servicios ================================================= */
+
+
+/* ================================================= Contenido Proyectos ================================================= */
+
+.portfolio {
+    background: var(--second-bg-color);
+}
+
+.portfolio h2 {
+    margin-bottom: 4rem;
+}
+
+.portfolio-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.portfolio-container .portfolio-box {
+    position: relative;
+    border-radius: 2rem;
+    box-shadow: 0 0 1rem var(--bg-color);
+    overflow: hidden;
+    display: flex;
+}
+
+.portfolio-box img {
+    width: 100%;
+    transition: .5s ease;
+}
+
+.portfolio-box:hover img {
+    transform: scale(1.1);
+}
+
+.portfolio-box .portfolio-layer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgb(0, 0, 0, .1), var(--main-color));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 4rem;
+    transform: translateY(100%);
+    transition: .5s ease;
+}
+
+.portfolio-box:hover .portfolio-layer {
+    transform: translateY(0);
+}
+
+.portfolio-layer h4 {
+    font-size: 3rem;
+}
+
+.portfolio-layer p {
+    font-size: 1.6rem;
+    margin: .3rem 0 1rem;
+}
+
+.portfolio-layer a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    height: 5rem;
+    background: var(--text-color);
+    border-radius: 50%;
+}
+
+.portfolio-layer a i {
+    font-size: 2rem;
+    color: var(--second-bg-color);
+}
+
+.portfolio-box i {
+    font-size: 7rem;
+    color: var(--main-color);
+}
+
+.portfolio-box h3 {
+    font-size: 2rem;
+}
+
+.portfolio-box p {
+    font-size: 1.6rem;
+    margin: 1rem 0 2rem;
+}
+
+/* ================================================= Fin Contenido Proyectos ================================================= */
